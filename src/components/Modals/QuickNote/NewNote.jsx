@@ -10,6 +10,17 @@ function NewNote({modalProps, fileActions}){
     const createAndAdd = () => {
         const doc = fileActions.createFile(fileTitle, "", fileAuthor);
         fileActions.addFile(doc);
+        fileActions.setActiveFile(doc);
+    }
+
+
+    const createNewFile = () => {
+        createAndAdd(); 
+        setFileTitle("");
+        setFileAuthor("");
+        localStorage.setItem("fileTitle", fileTitle);
+        localStorage.setItem("fileAuthor", fileAuthor);
+        modalProps.toggleCreateModal.hideModal(modalProps.modalState)
     }
     
     const [fileTitle, setFileTitle] = useState(localStorage.getItem("Title"));
@@ -29,7 +40,6 @@ function NewNote({modalProps, fileActions}){
                         <span className="close" onClick={() => {
                         localStorage.setItem("fileTitle", fileTitle);
                         localStorage.setItem("fileAuthor", fileAuthor);
-                        console.log(fileTitle);
                         modalProps.toggleCreateModal.hideModal(modalProps.modalState)
                         }}>x</span>
 
@@ -45,10 +55,7 @@ function NewNote({modalProps, fileActions}){
                     <input type="text" id="authorName" onChange={(chg) => {setFileAuthor(chg.target.value)}} placeholder={fileAuthor}/>
 
                     <button id="createFile"
-                    onClick={() => {createAndAdd(); 
-                    setFileTitle("");
-                    setFileAuthor("");
-                    modalProps.toggleCreateModal.hideModal(modalProps.modalState)}}    
+                    onClick={createNewFile}   
                     >Create</button>
                 </div>
             </div>            

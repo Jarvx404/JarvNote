@@ -18,7 +18,10 @@ function Sidebar({files, fileActions}){
         <div className="sidebar-wrapper">
 
             <div className="sidebar-top">
-                <button className="create-file" onClick={() => {fileActions.toggleCreateModal.showModal(fileActions.modalState)}}><AiFillFileAdd/></button>
+                <button className="create-file" onClick={() => {
+                fileActions.toggleCreateModal.showModal(fileActions.modalState)
+                }}><AiFillFileAdd/></button>
+                
                 <button className="delete-file"><AiFillDelete/></button>
                 <button className="edit-file"><AiFillEdit/></button>
                 <h1 className="rainbow_text">Jarv Note UwU</h1>
@@ -34,7 +37,7 @@ function Sidebar({files, fileActions}){
                     files.map((file) => {
                         return(
                         <div className="sidebar-document">
-                            <div className="sidebar-document-header"><h4>{file.title}</h4><h5>by {file.author}</h5></div>
+                            <div className="sidebar-document-header"><h4>{file.id}</h4><h5>by {file.author}</h5></div>
                             <small>{`${file.text.substr(1, 50)} ...`}</small>
                         </div>
                         )
