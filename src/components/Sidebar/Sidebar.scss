@@ -1,0 +1,174 @@
+@import '../../styles/colors.scss';
+
+.sidebar-wrapper{
+    width: 20vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    background-color:  $background-color;
+    border-right: 1px solid $text-color;
+    border-top: 1px solid $text-color;
+}
+
+.sidebar-top{
+    width: 100%;
+    display: flex;
+    h1{
+        margin: 0.75rem;
+        font-size: 1.5rem;
+        :hover{
+            text-shadow:  1px 10px #fff, 1px 1px 10px #ccc;
+            transition: 1s;
+        }
+    }
+    border-bottom: 1px solid white;
+
+    button{
+        background-color: transparent;
+        color: $text-color;
+        font-size: 1.5rem;
+        border: none;
+        outline: none;
+        padding: 0.75rem;
+        border-right: 1px solid white;
+        transition: font-size 2s;
+    
+        :hover{
+            cursor: pointer;
+            color: $primary-color;
+            transition: 0.3s;
+        }
+    }
+}
+
+
+.find-wrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input{
+        margin: 1.5rem 0rem 1.5rem 1rem;
+        background-color: $background-color;
+        outline: none;
+        border: 1px solid $text-color;
+        width: 90%;
+        color: $text-color;
+        height: auto;
+        padding: 1rem;
+    }
+    button{
+        background-color: transparent;
+        color: $text-color;
+        font-size: 1.5rem;
+        border: none;
+        outline: none;
+        padding: 0.75rem;
+        box-sizing:inherit;
+       
+      
+    
+        :hover{
+            cursor: pointer;
+            color: $secondary-color;
+            transition: 0.3s;
+        }
+    }
+    border-bottom: 1px solid $text-color;
+}
+
+
+
+
+
+.sidebar-files{
+    width: 100%;
+    padding: 0.75rem;
+    h4{
+        margin-bottom: 0.4rem;
+    }
+    height: 80%;
+    
+    .sidebar-document{
+        margin:0.5rem 0 2rem 0;
+    }
+    overflow-y:auto
+}
+
+.selected{
+    color:$secondary-color;
+    text-shadow: 0px 0px 10px $secondary-color;
+}
+
+
+
+.sidebar-bottom{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid white;
+
+    button{
+        background-color: transparent;
+        color: $text-color;
+        font-size: 1.5rem;
+        border: none;
+        outline: none;
+        padding: 0.75rem;
+        border: 1px solid white;
+        transition: font-size 2s;
+    
+        :hover{
+            cursor: pointer;
+            color: $primary-color;
+            transition: 0.3s;
+        }
+    }
+    
+    
+}
+
+.rainbow_text{
+    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow_animation 3s ease-in-out infinite;
+    background-size: 400% 100%;
+}
+
+
+@keyframes rainbow_animation {
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+}
+
+
+::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  
+
+::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  
+
+::-webkit-scrollbar-thumb {
+    background: $text-color;
+  }
+  
+
+::-webkit-scrollbar-thumb:hover {
+    background: $primary-color;
+}
+
