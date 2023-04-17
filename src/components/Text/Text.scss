@@ -5,7 +5,7 @@
     flex-direction: column;
     width: 100%;
     margin: 2rem;
-    input,textarea{
+    input,textarea,button{
         padding: 1rem;
         margin-bottom: 2rem;
         width: 100%;
@@ -13,6 +13,9 @@
         color: $text-color;
         outline: none;
         border: 1px solid $text-color;
+    }
+    button:hover{
+        cursor: pointer;
     }
     input{
         font-size: 1.25rem;

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./Sidebar.scss"
 
 
@@ -12,7 +13,8 @@ import { BsMarkdownFill } from 'react-icons/bs';
 
 
 
-function Sidebar({files, fileActions}){
+function Sidebar({files, fileActions, activeFile}){
+
     
     return(
         <div className="sidebar-wrapper">
@@ -23,7 +25,6 @@ function Sidebar({files, fileActions}){
                 }}><AiFillFileAdd/></button>
                 
                 <button className="delete-file"><AiFillDelete/></button>
-                <button className="edit-file"><AiFillEdit/></button>
                 <h1 className="rainbow_text">Jarv Note UwU</h1>
             </div>
 
@@ -36,9 +37,9 @@ function Sidebar({files, fileActions}){
                 {
                     files.map((file) => {
                         return(
-                        <div className="sidebar-document">
-                            <div className="sidebar-document-header"><h4>{file.id}</h4><h5>by {file.author}</h5></div>
-                            <small>{`${file.text.substr(1, 50)} ...`}</small>
+                        <div key={file.id} className={`sidebar-document ${file.id === activeFile.id ? `selected` : ``}`} onClick={()=>fileActions.setActiveFile(file)}>
+                            <div className="sidebar-document-header"><h4>{file.title}</h4><h5>by {file.author}</h5></div>
+                            <small>{`${file.text.substr(0, 50)} ...`}</small>
                         </div>
                         )
                     })
@@ -47,7 +48,7 @@ function Sidebar({files, fileActions}){
 
 
             <div className="sidebar-bottom">
-                <button id="markdownButton"><BsMarkdownFill/></button>
+                <button id="markdownButton" onClick={fileActions.setFiles(files)}><BsMarkdownFill/></button>
                 <button id="markdownButton"><AiFillPrinter/></button>
             </div>
 

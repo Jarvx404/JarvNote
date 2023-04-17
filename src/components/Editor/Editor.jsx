@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Sidebar from "../Sidebar/Sidebar"
 
-import {createFile, updateFile} from "./fileManager.js"
+import {createFile} from "./fileManager.js"
 import NewNote from "../Modals/QuickNote/NewNote";
 import Text from "../Text/Text";
 
@@ -19,7 +19,18 @@ function Editor(){
 
     const [showCreate, setShowCreate] = useState(true);
     
+    const updateFile = (newFile, oldFile) => {
+        let idx=0;
+        for(let f=0; f < files.length; f+=1){
+            if(files[f].id == oldFile.id){
+                files[f] = newFile;
+            }
+        }
 
+        setFiles(files);
+    }
+    
+    
 
     const toggleCreateModal = {
         showModal: (showCreate) => setShowCreate(true),
@@ -51,14 +62,18 @@ function Editor(){
         modalState: showCreate,
         setActiveFile: setActiveFile,
         updateFile: updateFile,
+
+        setFiles:setFiles
     }
+    
+    
 
     return(
         <>
             <div className="editor-layout">
             <NewNote modalProps={createModalProps} fileActions={fileActions}></NewNote>
-            <Sidebar files={files} fileActions ={fileActions}></Sidebar>
-            <Text activeFile={activeFile} fileActions={fileActions}></Text>
+            <Sidebar files={files} fileActions ={fileActions} activeFile={activeFile}></Sidebar>
+            <Text files={files} activeFile={activeFile} modalProps={createModalProps} fileActions={fileActions}></Text>
             </div>
 
         </>

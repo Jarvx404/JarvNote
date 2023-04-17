@@ -10,13 +10,3 @@ export const createFile = (title, text, author) => {
     return newFile;
 }
 
-export const updateFile = (id, title, text, author) => {
-    const datedFile = {
-        id: id,
-        title:title,
-        text:text,
-        author: author,
-    }
-    return updateFile
-}
-
