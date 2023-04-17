@@ -1,14 +1,23 @@
 import { useEffect, useState } from 'react';
 import './Text.scss'
 
+export const resetTileAndText = (v1,v2) => {
+    document.getElementById("fileTitle").value = v1;
+    document.getElementById("fileText").value = v2;
+} 
+
 function Text({activeFile, fileActions}){
 
+
+
+   
     useEffect(() =>{
         fileActions.setActiveFile(activeFile);
     })
 
     const [fileTitle, setFileTitle] = useState(activeFile.title);
     const [fileText, setFileText] = useState(activeFile.text);
+    
 
     const saveFile = () => {
         const newUpdate = {
@@ -19,13 +28,13 @@ function Text({activeFile, fileActions}){
         }
         fileActions.updateFile(newUpdate, activeFile);
         activeFile=newUpdate;
-        
     }
 
     return(
+        
         <div className="text-wrapper">
-            <input type="text" className="file-title-field" defaultValue={activeFile.title} onChange={(chg)=>setFileTitle(chg.target.value)}/>
-            <textarea className="file-content-field" defaultValue={activeFile.text} onChange={(chg)=>setFileText(chg.target.value)}/>
+            <input type="text" id="fileTitle" className="file-title-field"  onChange={(chg)=>setFileTitle(chg.target.value)}/>
+            <textarea className="file-content-field" id="fileText" onChange={(chg)=>setFileText(chg.target.value)}/>
             <button onClick={() => saveFile()}>Save</button>
         </div>
     )

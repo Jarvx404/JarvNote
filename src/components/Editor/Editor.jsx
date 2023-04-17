@@ -7,6 +7,7 @@ import {createFile} from "./fileManager.js"
 import NewNote from "../Modals/QuickNote/NewNote";
 import Text from "../Text/Text";
 
+
 import "./Editor.scss"
 
 
@@ -16,14 +17,22 @@ function Editor(){
     const [files, setFiles] = useState(Array());
     const [activeFile, setActiveFile] = useState({});
     
-
     const [showCreate, setShowCreate] = useState(true);
     
     const updateFile = (newFile, oldFile) => {
-        let idx=0;
         for(let f=0; f < files.length; f+=1){
             if(files[f].id == oldFile.id){
                 files[f] = newFile;
+            }
+        }
+
+        setFiles(files);
+    }
+
+    const deleteFile = (file) => {
+        for(let f=0; f < files.length; f+=1){
+            if(files[f].id == file.id){
+                files.splice(f,1);
             }
         }
 
@@ -62,6 +71,7 @@ function Editor(){
         modalState: showCreate,
         setActiveFile: setActiveFile,
         updateFile: updateFile,
+        deleteFile:deleteFile,
 
         setFiles:setFiles
     }
@@ -72,7 +82,7 @@ function Editor(){
         <>
             <div className="editor-layout">
             <NewNote modalProps={createModalProps} fileActions={fileActions}></NewNote>
-            <Sidebar files={files} fileActions ={fileActions} activeFile={activeFile}></Sidebar>
+            <Sidebar files={files}  fileActions ={fileActions} activeFile={activeFile}></Sidebar>
             <Text files={files} activeFile={activeFile} modalProps={createModalProps} fileActions={fileActions}></Text>
             </div>
 

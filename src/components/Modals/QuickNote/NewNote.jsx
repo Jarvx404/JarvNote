@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {resetTileAndText} from "../../Text/Text";
 import './NewNote.scss'
 
 
@@ -9,6 +10,7 @@ function NewNote({modalProps, fileActions}){
 
     const createAndAdd = () => {
         const doc = fileActions.createFile(fileTitle, "", fileAuthor);
+        resetTileAndText(fileTitle, "");
         fileActions.addFile(doc);
         fileActions.setActiveFile(doc);
     }
