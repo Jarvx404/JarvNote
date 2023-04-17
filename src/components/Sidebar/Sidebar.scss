@@ -12,6 +12,14 @@
     border-top: 1px solid $text-color;
 }
 
+.sidebar-document-header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .sidebar-top{
     width: 100%;
     display: flex;
@@ -94,6 +102,8 @@
     
     .sidebar-document{
         margin:0.5rem 0 2rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $text-color;
     }
     overflow-y:auto
 }

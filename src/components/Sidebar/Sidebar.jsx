@@ -13,12 +13,12 @@ import { BsMarkdownFill } from 'react-icons/bs';
 
 
 function Sidebar({files, fileActions}){
-    let doc = fileActions.createFile("a", "agffffffffffffffffffffffffffffflksdhgksdjhglksdhgkdfghdfkljghdflkgjhsdfklgjhdfgkjhsdfgjksdhgkljshglskdfjghsdklfjghsldkjhgskldjhgksdjfhg", "a");
+    
     return(
         <div className="sidebar-wrapper">
 
             <div className="sidebar-top">
-                <button className="create-file" onClick={() => {fileActions.addFile(doc)}}><AiFillFileAdd/></button>
+                <button className="create-file" onClick={() => {fileActions.toggleCreateModal(fileActions.modalState)}}><AiFillFileAdd/></button>
                 <button className="delete-file"><AiFillDelete/></button>
                 <button className="edit-file"><AiFillEdit/></button>
                 <h1 className="rainbow_text">Jarv Note UwU</h1>
@@ -34,7 +34,7 @@ function Sidebar({files, fileActions}){
                     files.map((file) => {
                         return(
                         <div className="sidebar-document">
-                            <h4>{file.title}</h4>
+                            <div className="sidebar-document-header"><h4>{file.title}</h4><h5>by {file.author}</h5></div>
                             <small>{`${file.text.substr(1, 50)} ...`}</small>
                         </div>
                         )

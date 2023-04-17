@@ -4,21 +4,33 @@ import { useState } from "react";
 import Sidebar from "../Sidebar/Sidebar"
 
 import {createFile} from "./fileManager.js"
+import NewNote from "../Modals/QuickNote/NewNote";
 
 
 function Editor(){
    
 
-    const [files, setfiles] = useState(Array());
+    const [files, setFiles] = useState(Array());
+    const [showCreate, setShowCreate] = useState(true);
 
-    const addFile = (file) => {
-        setfiles([...files, file])
+    const toggleCreateModal = (showCreate) =>{
+        setShowCreate(!showCreate);
     }
 
+    const addFile = (file) => {
+        setFiles([file, ...files])
+    }
+
+    const createModalProps = {
+        toggleCreateModal: toggleCreateModal,
+        modalState: showCreate,
+    }
     //un obiect pe care il transmitem ca parametru cu toate functile care vrem sa le foosim sa nu facem prea multe prop-uri
     const fileActions = {
         createFile: createFile,
         addFile: addFile,
+        toggleCreateModal: toggleCreateModal,
+        modalState: showCreate,
     }
     
     
@@ -28,6 +40,7 @@ function Editor(){
 
     return(
         <>
+            <NewNote modalProps={createModalProps} fileActions={fileActions}></NewNote>
             <Sidebar files={files} fileActions ={fileActions}></Sidebar>
         </>
     )
