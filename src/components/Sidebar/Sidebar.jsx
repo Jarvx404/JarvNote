@@ -18,7 +18,7 @@ function Sidebar({files, fileActions}){
         <div className="sidebar-wrapper">
 
             <div className="sidebar-top">
-                <button className="create-file" onClick={() => {fileActions.toggleCreateModal(fileActions.modalState)}}><AiFillFileAdd/></button>
+                <button className="create-file" onClick={() => {fileActions.toggleCreateModal.showModal(fileActions.modalState)}}><AiFillFileAdd/></button>
                 <button className="delete-file"><AiFillDelete/></button>
                 <button className="edit-file"><AiFillEdit/></button>
                 <h1 className="rainbow_text">Jarv Note UwU</h1>

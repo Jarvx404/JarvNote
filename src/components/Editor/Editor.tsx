@@ -13,9 +13,11 @@ function Editor(){
     const [files, setFiles] = useState(Array());
     const [showCreate, setShowCreate] = useState(true);
 
-    const toggleCreateModal = (showCreate) =>{
-        setShowCreate(!showCreate);
+    const toggleCreateModal = {
+        showModal: (showCreate) => setShowCreate(true),
+        hideModal: (showCreate) => setShowCreate(false),
     }
+    
 
     const addFile = (file) => {
         setFiles([file, ...files])
